@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="icomoon/style.css">
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container ">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="text-center">Guests'list</h3>
+                <div id="output" class="mt-4"></div>
+                <div id="result"></div>
+            </div>
+            <div class="col-6">
+                <h3 class="text-center mt-2">Add new guests</h3>
+                <form action="">
+                    <div class="form-group">
+                        <label for="">Name:</label>
+                        <input type="text" class="form-control" id="name">
+                        <label for="">Count:</label>
+                        <input type="number" class="form-control" id="count">
+                        <label for="">Confirmed:</label>
+                        <input type="text" class="form-control" id="confirmed">
+                        <label for="">Id:</label>
+                        <input type="text" class="form-control" id="myid">
+                        <button type="button" class="btn btn-warning mt-2" id="send">Add a new guest</button>
+                        <button type="reset" class="btn btn-warning mt-2">Reset</button>
+                        <span id="add_output"></span>
+                    </div>
+                </form>
+                <form action="">
+                    <div class="form-group">
+                        <h3 class="text-center">Remove a guest</h3>
+                        <label for="">Id:</label>
+                        <input type="text" class="form-control" id="id">
+                        <button type="button" class="btn btn-warning mt-2" id="remove">Remove</button>
+                        <button type="reset" class="btn btn-warning mt-2">Reset</button>
+                        <span id="remove_output"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="app2.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
