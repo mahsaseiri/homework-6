@@ -5,42 +5,74 @@ function init() {
     var remove_output = document.getElementById("remove_output");
     // add new guests--------------------------------------------------------------------------
     document.getElementById("send").addEventListener("click", function() {
+        var i = true;
         var name = document.forms[0].name.value;
-        var count = Number(document.forms[0].count.value);
+        var count = (document.forms[0].count.value);
         var confirmed = document.forms[0].confirmed.value;
-        var myid = document.forms[0].myid.value
-        if (confirmed == "true") {
+        var myid = (res.length) + 1;
+        console.log(res.length);
+        if (confirmed == "yes") {
             confirmed = true;
         } else {
             confirmed = false;
         }
-        var new_guest = { "name": name, "count": count, "confirmed": confirmed, "id": myid };
-        if ((count + counter) <= 30) {
-            add_output.innerHTML = "";
-            res.push(new_guest);
-            counter = 0;
-            build(res, "output");
-        } else {
-            var t = 30 - counter;
+        if (name == "") {
             add_output.style.color = "red";
-            add_output.innerHTML = "you can not add more than  " + t;
+            add_output.innerHTML = "please enter the name of guest";
+        } else if (count == "") {
+            add_output.style.color = "red";
+            add_output.innerHTML = "please enter the count";
+        } else {
+            count = Number(count);
+            var new_guest = { "name": name, "count": count, "confirmed": confirmed, "id": myid };
+            if ((count + counter) <= 30) {
+                add_output.innerHTML = "";
+                res.push(new_guest);
+                counter = 0;
+                build(res, "output");
+            } else {
+                var t = 30 - counter;
+                add_output.style.color = "red";
+                add_output.innerHTML = "you can not add more than  " + t;
+            }
         }
+
 
     });
     // remove a guest with id-------------------------------------------------------------------
     document.getElementById("remove").addEventListener("click", function() {
+        var i = -1;
+        var b;
         var id = document.forms[1].id.value;
-        // because array starts from 0 index
-        id = Number(id) - 1;
-        if (id < res.length) {
+        id = Number(id);
+        for (var j = 0; j < res.length; j++) {
+            console.log(res);
+            if (id == res[j].id) {
+                i = 1;
+                b = j;
+                console.log("hello");
+                break;
+            }
+        }
+        if (i == 1) {
             remove_output.innerHTML = "";
-            res.splice(id, 1);
+            res.splice(j, 1);
             counter = 0;
             build(res, "output");
         } else {
             remove_output.style.color = "red";
             remove_output.innerHTML = "it doesn't exist in list";
         }
+
+        // if (id < res.length) {
+        //     remove_output.innerHTML = "";
+        //     res.splice(id, 1);
+        //     counter = 0;
+        //     build(res, "output");
+        // } else {
+        //     remove_output.style.color = "red";
+        //     remove_output.innerHTML = "it doesn't exist in list";
+        // }
 
     });
 
@@ -82,7 +114,7 @@ function init() {
         document.getElementById(id).innerHTML = html;
     };
     // call loadJson method ----------------------------------------------------------------
-    laodJson("GET", "https://api.myjson.com/bins/10tx5f", function(r) {
+    laodJson("GET", "https://api.myjson.com/bins/gk6ti", function(r) {
         build(r, "output");
     });
 
